@@ -40,6 +40,7 @@ func GetAlbumById(ctx *gin.Context) {
 
 func CreateAlbum(ctx *gin.Context) {
 	db := repository.Init()
+
 	ctx.Set("db", db)
 	var newAlbum model.Album
 	if err := ctx.ShouldBindJSON(&newAlbum); err != nil {
