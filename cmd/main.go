@@ -1,15 +1,15 @@
 package main
 
 import (
-	"go-gin/database"
-	"go-gin/routes"
+	"go-gin/internal/app/repository"
+	"go-gin/internal/app/routes"
 
 	"github.com/gin-gonic/gin"
 )
 
 func main() {
 
-	db := database.Init()
+	db := repository.Init()
 
 	router := gin.Default()
 

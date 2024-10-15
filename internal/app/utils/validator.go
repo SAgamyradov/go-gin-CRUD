@@ -2,7 +2,7 @@ package utils
 
 import (
 	"errors"
-	model "go-gin/models"
+	model "go-gin/internal/app/models"
 
 	"github.com/gin-gonic/gin"
 	"github.com/go-playground/validator/v10"

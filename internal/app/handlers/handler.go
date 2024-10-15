@@ -1,9 +1,9 @@
 package controllers
 
 import (
-	"go-gin/database"
-	model "go-gin/models"
-	"go-gin/utils"
+	model "go-gin/internal/app/models"
+	"go-gin/internal/app/repository"
+	"go-gin/internal/app/utils"
 	"net/http"
 	"strconv"
 
@@ -11,7 +11,7 @@ import (
 )
 
 func GetAlbum(ctx *gin.Context) {
-	db := database.Init()
+	db := repository.Init()
 
 	var albums []model.Album
 	if err := db.Find(&albums).Error; err != nil {
@@ -22,7 +22,7 @@ func GetAlbum(ctx *gin.Context) {
 }
 
 func GetAlbumById(ctx *gin.Context) {
-	db := database.Init()
+	db := repository.Init()
 
 	id, err := strconv.Atoi(ctx.Param("id"))
 	if err != nil {
@@ -39,7 +39,7 @@ func GetAlbumById(ctx *gin.Context) {
 }
 
 func CreateAlbum(ctx *gin.Context) {
-	db := database.Init()
+	db := repository.Init()
 	ctx.Set("db", db)
 	var newAlbum model.Album
 	if err := ctx.ShouldBindJSON(&newAlbum); err != nil {
@@ -58,7 +58,7 @@ func CreateAlbum(ctx *gin.Context) {
 }
 
 func UpdateAlbum(ctx *gin.Context) {
-	db := database.Init()
+	db := repository.Init()
 	id, err := strconv.Atoi(ctx.Param("id"))
 	if err != nil {
 		ctx.JSON(400, gin.H{"error": "Invalid album ID"})
@@ -82,7 +82,7 @@ func UpdateAlbum(ctx *gin.Context) {
 }
 
 func DeleteAlbum(ctx *gin.Context) {
-	db := database.Init()
+	db := repository.Init()
 
 	id, err := strconv.Atoi(ctx.Param("id"))
 	if err != nil {

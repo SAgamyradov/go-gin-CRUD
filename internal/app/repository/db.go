@@ -1,8 +1,8 @@
-package database
+package repository
 
 import (
 	"fmt"
-	model "go-gin/models"
+	model "go-gin/internal/app/models"
 
 	"github.com/spf13/viper"
 	"gorm.io/driver/postgres"
